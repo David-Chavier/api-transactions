@@ -5,10 +5,12 @@ import { User } from "./models/user";
 import { TransactionController } from "./controllers/transactions.controller";
 import { StatusCodes } from "http-status-codes";
 import { UserMiddleware } from "./middleware/user.middleware";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
 
+app.use(cors());
 //Rota de usuários
 //listar usuários
 app.get("/users", new UserController().getAllUsers);
@@ -56,6 +58,8 @@ app.delete(
   new TransactionController().deleteTransaction
 );
 
-app.listen(3333, () => {
-  console.log("API is running");
+const PORT = process.env.PORT;
+
+app.listen(PORT, () => {
+  console.log(`API is running ${PORT}`);
 });
