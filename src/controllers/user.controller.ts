@@ -5,7 +5,7 @@ import { StatusCodes } from "http-status-codes";
 
 export class UserController {
   //metodo
-  public getAllUsers(req: Request, res: Response) {
+  public list(req: Request, res: Response) {
     try {
       const { name, email, cpf } = req.query;
 
@@ -68,7 +68,7 @@ export class UserController {
       });
     }
   }
-  public createUser(req: Request, res: Response) {
+  public create(req: Request, res: Response) {
     try {
       const { name, cpf, email, age } = req.body;
 
